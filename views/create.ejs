@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create files</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Create new file</h1>
+    <form action="/create" method="POST">
+      <label for="fileName">File Name: </label>
+      <input type="text" name="fileName" id="fileName" required />
+      <label for="fileContent"> File Content : </label>
+      <textarea
+        name="fileContent"
+        id="fileContent"
+        cols="4"
+        rows="5"
+      ></textarea>
+      <button type="submit">Create File</button>
+    </form>
+  </body>
+</html>
