@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+    <h1>File Detail</h1>
+    <h2>File Name: <%= fileName %></h2>
+    <!-- Display file content here if needed -->
+    <form action="/files/<%= fileName %>/update/" method="POST">
+        <label for="newFileName">New File Name: </label>
+        <input type="text" name="newFileName" id="newFileName" required />
+        <button type="submit">Update File Name</button>
+    </form>
+</body>
+</html>

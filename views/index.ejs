@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>container-data</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+
+    <title>List of files </title>
+
 </head>
 <body>
-    
+    <h1>List of fileNames</h1>
+    <div>
+        <ul>
+            <% files.forEach(file => { %>
+              <li>
+                <a href="/files/<%= file %>"><%= file %></a>
+                <a href="/files/<%= file %>/edit"><i class="fas fa-edit"></i></a>
+                <a href="/files/<%= file %>/delete"><i class="fas fa-trash"></i></a>
+              </li> 
+            <% }); %>
+          </ul>
+    </div> 
+    <div>
+        <h2>Actions</h2>
+            <button type="submit"><a href="/create" class="create-file-btn">Create file</a></button>
+     
+    </div>
 </body>
 </html>
