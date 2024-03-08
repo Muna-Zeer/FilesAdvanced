@@ -1,4 +1,4 @@
-const { log } = require("console");
+const multer = require("multer");
 const express = require("express");
 const app = express();
 const fs = require("fs");
@@ -8,6 +8,9 @@ app.set("views", "./views");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+const upload = multer({ dest: "uploads/" }).single("file");
+
 
 app.get("/create", (req, res) => {
   res.render("create");
@@ -109,6 +112,12 @@ app.get("/files/:filename", (req, res) => {
       }
     });
   });
+
+
+  //Routes for advanced functions
+
+
+
 app.listen(3000, () => {
   console.log("server listening on port 3000");
 });
