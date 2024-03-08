@@ -114,17 +114,6 @@ export const decryptedData=async (data)=>{
 //list all files 
 export const getListFiles=async(req,res)=>{
   const filePath="./data";
-//   fs.readdir=(filePath,(err,files)=>{
-// if(err){
-//   res.status(500).send({message:"unable to scanning files"});
-// }
-
-// let fileStores=[];
-// files.forEach((file)=>{
-//   fileStores.push({name:file});
-// })
-// res.status(200).send(fileStores);
-//   })
 try {
   const files =await fs.promises.readdir("./data");
   res.status(200).send({files});

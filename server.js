@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const { extname } = require("path");
+//export user functions
+const {uploadFile,searchFile,compressedFile,deCompressedFile,encryptData,decryptedData,getListFiles,downloadFile} =require("./controller/fileUserOperations");
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
@@ -18,7 +20,7 @@ app.get("/create", (req, res) => {
 
 app.post("/create", (req, res) => {
   const { fileName, fileContent } = req.body;
-  const allowedExtentions = [".js", ".txt", ".json", ".css"];
+  const allowedExtentions = [".js", ".txt", ".json", ".css",".pdf"];
   const ext = extname(fileName);
   if (!allowedExtentions.includes(ext)) {
     res.status(400).send("un supported ext file");
@@ -51,7 +53,7 @@ app.get("/", (req, res) => {
 });
 
 // Update file based on the current file name
-app.get("/files/:filename/edit", (req, res) => { // Changed route to avoid conflict
+app.get("/files/:filename/edit", (req, res) => { 
   const fileName = req.params.filename;
   fs.readFile(`./data/${fileName}`, "utf8", (err, data) => {
     if (err) {
@@ -64,7 +66,7 @@ app.get("/files/:filename/edit", (req, res) => { // Changed route to avoid confl
 });
 
 // Handle post request to update file name
-app.post("/files/:filename/update", (req, res) => { // Changed route to avoid conflict
+app.post("/files/:filename/update", (req, res) => {
   const fileName = req.params.filename;
   const newFileName = req.body.newFileName;
 
@@ -115,7 +117,14 @@ app.get("/files/:filename", (req, res) => {
 
 
   //Routes for advanced functions
-
+app.post("/upload",uploadFile);
+app.get("/search/:searchItem",searchFile);
+app.post("/compressFile",compressedFile);
+app.post("/decompressFile",deCompressedFile);
+app.post("/encrypt",encryptData);
+app.post("/decrypt",decryptedData);
+app.get("/list-files",getListFiles);
+app.get("download/:fileName",downloadFile);
 
 
 app.listen(3000, () => {
