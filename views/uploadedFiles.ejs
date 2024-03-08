@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uploaded Files</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <h1>List of Uploaded Files</h1>
+    <ul>
+      <% filesList.forEach(file => { %>
+      <li>
+        <%= file %> 
+        <label for="compress_<%= file %>">Compress before downloaded</label>
+        <input type="checkbox" id="compress_<%= file %>""
+        name="compress_<%= file %>" value="compress">
+        <a href="/listOfFiles/<%= file %>?compress=true" download>
+          <i class="fas fa-download"></i>
+        </a>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

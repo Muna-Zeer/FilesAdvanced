@@ -2,16 +2,25 @@ const multer = require("multer");
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const { extname } = require("path");
+const path = require("path");
 //export user functions
-const {uploadFile,searchFile,compressedFile,deCompressedFile,encryptData,decryptedData,getListFiles,downloadFile} =require("./controller/fileUserOperations");
+const {uploadFile,searchFile,compressedFile,deCompressedFile,encryptData,decryptedData,
+    getListFiles,downloadFile} =require("./controller/fileUserOperations");
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const upload = multer({ dest: "uploads/" }).single("file");
+const storage = multer.diskStorage({
+    destination: "./uploads",
+    filename: function (req, file, cb) {
+        const ext = path.extname(file.originalname);
+        cb(null, `${file.fieldname}-${Date.now()}${ext}`);
+    }
+});
+
+const upload = multer({ storage:storage}).single("file");
 
 
 app.get("/create", (req, res) => {
@@ -21,7 +30,7 @@ app.get("/create", (req, res) => {
 app.post("/create", (req, res) => {
   const { fileName, fileContent } = req.body;
   const allowedExtentions = [".js", ".txt", ".json", ".css",".pdf"];
-  const ext = extname(fileName);
+  const ext = path.extname(fileName);
   if (!allowedExtentions.includes(ext)) {
     res.status(400).send("un supported ext file");
     return;
@@ -117,15 +126,25 @@ app.get("/files/:filename", (req, res) => {
 
 
   //Routes for advanced functions
-app.post("/upload",uploadFile);
-app.get("/search/:searchItem",searchFile);
+app.post("/upload",upload,uploadFile);
+app.get("/search",searchFile);
 app.post("/compressFile",compressedFile);
 app.post("/decompressFile",deCompressedFile);
 app.post("/encrypt",encryptData);
 app.post("/decrypt",decryptedData);
-app.get("/list-files",getListFiles);
-app.get("download/:fileName",downloadFile);
+app.get("/displayUploadedFiles", async (req, res) => {
+    try {
+        const uploadDir = path.join(__dirname, "./uploads");
+        const filesList = await fs.promises.readdir(uploadDir);
+        res.render("uploadedFiles", { filesList });
+    } catch (error) {
+        console.log("Error getting list of files", error);
+        res.status(500).send({ message: "Failed to list files", error: error.message });
+    }
+});
 
+app.get("/listOfFiles",getListFiles);
+app.get("/listOfFiles/:fileName", downloadFile);
 
 app.listen(3000, () => {
   console.log("server listening on port 3000");

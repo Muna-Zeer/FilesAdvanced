@@ -1,0 +1,677 @@
+[
+  {
+    "category": "Web Development Languages",
+    "rating": 4.1,
+    "name": "Sarah Smith",
+    "image": "html.png",
+    "topic": "HTML",
+    "description": "HTML (Hypertext Markup Language) is the standard markup language for creating web pages and other information that can be displayed in a web browser. It provides a structure for content and defines how it should be displayed on a web page, including text, images, and multimedia. HTML is essential for creating static web pages and is a foundational technology for the World Wide Web.",
+    "subtopics": [
+      "HTML syntax and structure",
+      "HTML elements and attributes",
+      "HTML forms and input elements",
+      "HTML tables and lists",
+      "HTML multimedia elements (audio, video, images)",
+      "HTML accessibility and semantic markup"
+    ],
+    "id": 1
+  },
+  {
+    "category": "Web Development Languages",
+    "rating": 3.58,
+    "name": "David Lee",
+    "image": "css.webp",
+    "topic": "CSS",
+    "description": "CSS (Cascading Style Sheets) is a style sheet language used for describing the presentation of a document written in HTML or XML, including colors, layout, fonts, and animations. It separates the presentation from the content and structure of a web page, allowing for greater flexibility and control over the design of a website.",
+    "subtopics": [
+      "CSS selectors and specificity",
+      "CSS box model and layout",
+      "CSS typography and fonts",
+      "CSS color and background properties",
+      "CSS transitions and animations",
+      "CSS responsive design and media queries"
+    ],
+    "id": 2
+  },
+  {
+    "category": "Web Development Languages",
+    "rating": 4.09,
+    "name": "Emily Chen",
+    "image": "javascript.jpg",
+    "topic": "JavaScript",
+    "description": "JavaScript is a high-level programming language that is used to create interactive web pages and dynamic user interfaces. It allows for the creation of complex, responsive web applications that can run both on the client side (in the web browser) and the server side (using Node.js). JavaScript is one of the most widely-used programming languages in web development.",
+    "subtopics": [
+      "JavaScript data types and variables",
+      "JavaScript functions and control flow",
+      "JavaScript objects and classes",
+      "JavaScript DOM manipulation and events",
+      "JavaScript asynchronous programming and callbacks",
+      "JavaScript frameworks and libraries (React, Angular, Vue)"
+    ],
+    "id": 3
+  },
+  {
+    "category": "Frontend Frameworks and Libraries",
+    "rating": 4.06,
+    "name": "John Johnson",
+    "image": "jquery.png",
+    "topic": "jQuery",
+    "description": "jQuery is a fast, small, and feature-rich JavaScript library that simplifies the process of manipulating HTML documents, handling events, animating elements, and AJAX interactions for web developers. It is designed to make client-side scripting easier and more accessible for web developers of all skill levels.",
+    "subtopics": [
+      "jQuery selectors and traversal",
+      "jQuery DOM manipulation and events",
+      "jQuery animations and effects",
+      "jQuery AJAX interactions",
+      "jQuery plugins and widgets",
+      "jQuery mobile development"
+    ],
+    "id": 4
+  },
+  {
+    "category": "Frontend Frameworks and Libraries",
+    "rating": 3.64,
+    "name": "Jessica Davis",
+    "image": "angular.png",
+    "topic": "Angular",
+    "description": "Angular is a popular, open-source, and comprehensive front-end framework for building complex web applications. It is maintained by Google and offers a wide range of features, including declarative templates, dependency injection, end-to-end testing, and more. Angular uses TypeScript, a superset of JavaScript, to provide strong typing and other advanced features for large-scale projects.",
+    "subtopics": [
+      "Angular architecture and components",
+      "Angular templates and directives",
+      "Angular services and dependency injection",
+      "Angular forms and input validation",
+      "Angular routing and navigation",
+      "Angular animations and performance optimization"
+    ],
+    "id": 5
+  },
+  {
+    "category": "Frontend Frameworks and Libraries",
+    "rating": 3.79,
+    "name": "Daniel Brown",
+    "image": "react.webp",
+    "topic": "React",
+    "description": "React is a popular, open-source, and declarative front-end JavaScript library for building user interfaces. It was developed by Facebook and has gained widespread adoption due to its component-based architecture, virtual DOM, and ease of use. React is often used in conjunction with other libraries and frameworks to create complex web applications.",
+    "subtopics": [
+      "React components and props",
+      "React state and lifecycle methods",
+      "React JSX and rendering",
+      "React events and handling",
+      "React hooks and functional components",
+      "React router and navigation",
+      "React Redux and state management",
+      "React testing and debugging"
+    ],
+    "id": 6
+  },
+  {
+    "category": "Frontend Frameworks and Libraries",
+    "rating": 3.57,
+    "name": "Ava Jones",
+    "image": "vuejs.jpeg",
+    "topic": "Vue.js",
+    "description": "Vue.js is a progressive, open-source JavaScript framework for building user interfaces. It is designed to be lightweight, fast, and flexible, and can be easily integrated into existing projects or used to build new ones. Vue.js features a reactive and composable architecture, and offers a variety of powerful features such as declarative rendering, two-way data binding, and more.",
+    "subtopics": [
+      "Vue.js templates and directives",
+      "Vue.js components and props",
+      "Vue.js reactivity and computed properties",
+      "Vue.js event handling and methods",
+      "Vue.js lifecycle hooks",
+      "Vue.js router and navigation",
+      "Vue.js state management with Vuex",
+      "Vue.js animations and transitions"
+    ],
+    "id": 7
+  },
+  {
+    "category": "Backend Frameworks and Libraries",
+    "rating": 3.97,
+    "name": "Michael Kim",
+    "image": "nodejs.webp",
+    "topic": "Node.js",
+    "description": "Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to build server-side applications using JavaScript. It is built on top of Google's V8 JavaScript engine and offers a variety of features such as non-blocking I/O, event-driven architecture, and a rich set of modules and libraries. Node.js is often used in conjunction with popular web frameworks like Express.js, Nest.js, and more.",
+    "subtopics": [
+      "Node.js modules and packages",
+      "Node.js file system and I/O operations",
+      "Node.js events and event-driven programming",
+      "Node.js streams and buffers",
+      "Node.js child processes and clustering",
+      "Node.js error handling and debugging",
+      "Node.js web frameworks (e.g. Express.js, Nest.js)",
+      "Node.js databases (e.g. MongoDB, MySQL)"
+    ],
+    "id": 8
+  },
+  {
+    "category": "Backend Frameworks and Libraries",
+    "rating": 4,
+    "name": "Sophia Rodriguez",
+    "image": "expressjs.webp",
+    "topic": "Express.js",
+    "description": "Express.js is a popular, open-source web framework for building web applications and APIs using Node.js. It provides a robust set of features for handling HTTP requests and responses, routing, middleware, and more. Express.js is highly customizable and extensible, and offers a wide range of plugins and modules that can be used to add additional functionality to your application.",
+    "subtopics": [
+      "Express.js routing and route parameters",
+      "Express.js middleware and error handling",
+      "Express.js templating engines (e.g. Handlebars, Pug)",
+      "Express.js RESTful APIs",
+      "Express.js authentication and authorization",
+      "Express.js testing with Mocha and Chai",
+      "Express.js deployment and scaling",
+      "Express.js integration with databases (e.g. MongoDB, MySQL)"
+    ],
+    "id": 9
+  },
+  {
+    "category": "Backend Frameworks and Libraries",
+    "rating": 3.08,
+    "name": "William Lee",
+    "image": "ruby.jpeg",
+    "topic": "Ruby on Rails",
+    "description": "Ruby on Rails, often simply called Rails, is a popular, open-source web application framework written in the Ruby programming language. Rails follows the Model-View-Controller (MVC) architectural pattern and provides developers with a set of conventions and tools for building database-backed web applications. Rails emphasizes convention over configuration and aims to make web development more productive and enjoyable.",
+    "subtopics": [
+      "Ruby on Rails models, views, and controllers",
+      "Ruby on Rails Active Record and database migrations",
+      "Ruby on Rails routing and route parameters",
+      "Ruby on Rails RESTful APIs",
+      "Ruby on Rails testing with RSpec and Capybara",
+      "Ruby on Rails deployment with Heroku",
+      "Ruby on Rails authentication and authorization",
+      "Ruby on Rails front-end integration (e.g. with React)"
+    ],
+    "id": 10
+  },
+  {
+    "category": "Backend Frameworks and Libraries",
+    "rating": 4.18,
+    "name": "Olivia Martinez",
+    "image": "django.jpeg",
+    "topic": "Django",
+    "description": "Django is a popular, open-source web application framework written in Python. Django follows the Model-View-Template (MVT) architectural pattern and provides developers with a set of tools and conventions for building robust and scalable web applications. Django emphasizes reusability and modularity and includes features for handling common web development tasks like authentication, routing, and database management.",
+    "subtopics": [
+      "Django models, views, and templates",
+      "Django ORM and database migrations",
+      "Django routing and URL patterns",
+      "Django forms and form validation",
+      "Django RESTful APIs with Django REST Framework",
+      "Django testing with Pytest and Selenium",
+      "Django deployment and scaling",
+      "Django security and authentication",
+      "Django integration with front-end frameworks (e.g. React, Angular)"
+    ],
+    "id": 11
+  },
+  {
+    "category": "Backend Frameworks and Libraries",
+    "rating": 3.02,
+    "name": "Ethan Thompson",
+    "image": "flask.webp",
+    "topic": "Flask",
+    "description": "Flask is a popular, open-source web application framework written in Python. Flask is a lightweight and flexible framework that provides developers with a minimal set of tools and conventions for building web applications. Flask emphasizes simplicity and allows developers to choose the tools and libraries they prefer for handling different aspects of web development.",
+    "subtopics": [
+      "Flask routes and views",
+      "Flask templates and template inheritance",
+      "Flask request handling and form validation",
+      "Flask SQLAlchemy and database integration",
+      "Flask RESTful APIs with Flask-RESTful",
+      "Flask testing with Pytest and Selenium",
+      "Flask deployment and scaling",
+      "Flask security and authentication",
+      "Flask integration with front-end frameworks (e.g. React, Angular)"
+    ],
+    "id": 12
+  },
+  {
+    "category": "Databases and APIs",
+    "rating": 4.45,
+    "name": "Madison Davis",
+    "image": "sql.png",
+    "topic": "SQL",
+    "description": "SQL (Structured Query Language) is a programming language used for managing and manipulating relational databases. It is used to create, modify, and retrieve data from a database. SQL is used by developers, data analysts, and database administrators to perform various tasks related to database management and data analysis.",
+    "subtopics": [
+      "SQL basics (SELECT, INSERT, UPDATE, DELETE)",
+      "SQL functions (SUM, COUNT, AVG, MIN, MAX)",
+      "SQL joins (INNER JOIN, OUTER JOIN, CROSS JOIN)",
+      "SQL subqueries",
+      "SQL views and stored procedures",
+      "SQL transactions and ACID properties",
+      "SQL indexes and performance tuning",
+      "SQL security and authentication",
+      "Advanced SQL topics (e.g. window functions, recursive queries)"
+    ],
+    "id": 13
+  },
+  {
+    "category": "Databases and APIs",
+    "rating": 4.46,
+    "name": "Isabella Wilson",
+    "image": "nosql.png",
+    "topic": "NoSQL",
+    "description": "NoSQL databases are non-relational databases that do not use a fixed schema like traditional relational databases. NoSQL databases are used to store large volumes of unstructured or semi-structured data, such as social media data, sensor data, and logs. NoSQL databases are designed to be highly scalable and provide high performance for read and write operations.",
+    "subtopics": [
+      "NoSQL data models (document-oriented, key-value, column-family, graph)",
+      "NoSQL databases (MongoDB, Cassandra, Couchbase, Amazon DynamoDB)",
+      "Data modeling in NoSQL databases",
+      "Querying NoSQL databases (e.g. MongoDB's query language)",
+      "NoSQL database performance and scalability",
+      "Use cases for NoSQL databases",
+      "Comparison of NoSQL databases to traditional SQL databases",
+      "Limitations of NoSQL databases"
+    ],
+    "id": 14
+  },
+  {
+    "category": "Databases and APIs",
+    "rating": 3.26,
+    "name": "Jacob Garcia",
+    "image": "restapi.jpeg",
+    "topic": "REST APIs",
+    "description": "REST (Representational State Transfer) is an architectural style for building web services. RESTful APIs provide a standard way for systems to communicate over the internet, and are widely used to create web services and mobile applications. RESTful APIs use HTTP requests to retrieve and send data, and can be used to perform CRUD (Create, Read, Update, Delete) operations on resources.",
+    "subtopics": [
+      "REST principles and architecture",
+      "HTTP methods (GET, POST, PUT, DELETE, PATCH)",
+      "API design best practices",
+      "API documentation",
+      "API testing",
+      "API security and authentication",
+      "Versioning of REST APIs",
+      "REST vs SOAP APIs",
+      "Tools and frameworks for building REST APIs (e.g. Swagger, Postman, Express.js)"
+    ],
+    "id": 15
+  },
+  {
+    "category": "Databases and APIs",
+    "rating": 4.01,
+    "name": "Mia Brown",
+    "image": "graphql.png",
+    "topic": "GraphQL",
+    "description": "GraphQL is an open-source query language and runtime for APIs that was developed by Facebook. It allows clients to request only the data they need and enables efficient querying, combining, and retrieving of data from multiple sources. GraphQL is often used in modern web applications as an alternative to RESTful APIs.",
+    "subtopics": [
+      "GraphQL syntax and operations",
+      "GraphQL schema and types",
+      "Queries, mutations, and subscriptions",
+      "Resolvers and data sources",
+      "Apollo Server and Apollo Client",
+      "GraphQL vs RESTful APIs",
+      "Using GraphQL with React and other frontend frameworks",
+      "Tools and libraries for building GraphQL APIs (e.g. Prisma, Hasura, PostGraphile)"
+    ],
+    "id": 16
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.54,
+    "name": "Evelyn Nguyen",
+    "image": "oauth.png",
+    "topic": "OAuth",
+    "description": "OAuth is an open standard for authorization that allows users to grant third-party applications access to their resources without giving them their passwords. It is often used by social media, mobile, and web applications as a way of delegating authentication to other services, such as Facebook, Google, or Twitter.",
+    "subtopics": [
+      "OAuth 1.0 vs OAuth 2.0",
+      "OAuth roles and flows",
+      "Access tokens and refresh tokens",
+      "OpenID Connect and Single Sign-On (SSO)",
+      "Implementing OAuth in web and mobile applications",
+      "Security best practices for OAuth"
+    ],
+    "id": 17
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.52,
+    "name": "Liam Hernandez",
+    "image": "json.png",
+    "topic": "JSON",
+    "description": "JSON stands for JavaScript Object Notation, and it's a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is commonly used for transmitting data between a server and web application, as an alternative to XML.",
+    "subtopics": [
+      "Syntax and data types",
+      "Serialization and deserialization",
+      "Parsing and validating JSON data",
+      "Comparing JSON with other data formats like XML and CSV"
+    ],
+    "id": 18
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.22,
+    "name": "Avery Perez",
+    "image": "ajax.gif",
+    "topic": "AJAX",
+    "description": "AJAX stands for Asynchronous JavaScript and XML, and it's a set of web development techniques that allow web pages to update content asynchronously without requiring a page reload. This allows for a smoother and more responsive user experience.",
+    "subtopics": [
+      "The XMLHttpRequest object",
+      "JSON and XML data exchange",
+      "Manipulating the DOM with AJAX",
+      "Error handling and debugging"
+    ],
+    "id": 19
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.76,
+    "name": "Victoria Kim",
+    "image": "websockets.png",
+    "topic": "Websockets",
+    "subtopics": [
+      "Real-time communication",
+      "Event-driven architecture",
+      "Socket.io library",
+      "Websocket API",
+      "Binary data transmission"
+    ],
+    "id": 20
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.93,
+    "name": "Ryan Jones",
+    "image": "responsive.gif",
+    "topic": "Responsive Design",
+    "description": "Responsive design is an approach to web design that makes web pages render well on a variety of devices and window or screen sizes.",
+    "subtopics": [
+      "Fluid grids",
+      "Flexible images",
+      "Media queries",
+      "Viewport"
+    ],
+    "id": 21
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.77,
+    "name": "Samantha Martin",
+    "image": "accessibility.png",
+    "topic": "Accessibility",
+    "description": "Accessibility in web development refers to the practice of designing and coding websites and applications that can be used by people with disabilities, including visual, auditory, physical, and cognitive disabilities.",
+    "subtopics": [
+      "Screen readers and other assistive technologies",
+      "Semantic HTML",
+      "Accessible forms",
+      "Proper use of alt tags and other image attributes",
+      "Keyboard navigation",
+      "Color contrast and use of color-blindness simulation tools"
+    ],
+    "id": 22
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.1,
+    "name": "Luke Davis",
+    "image": "ux.jpeg",
+    "topic": "User Experience (UX)",
+    "description": "User Experience (UX) refers to the overall experience that a user has while interacting with a product, system, or service.",
+    "subtopics": [
+      "User research",
+      "Wireframing",
+      "Prototyping",
+      "Usability testing",
+      "Information architecture",
+      "Interaction design"
+    ],
+    "id": 23
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.12,
+    "name": "Grace Wilson",
+    "image": "ui.png",
+    "topic": "User Interface (UI)",
+    "description": "User interface (UI) refers to the visual elements and controls that users interact with when using a software application or website.",
+    "subtopics": [
+      "Layout",
+      "Typography",
+      "Color schemes",
+      "Navigation",
+      "Buttons and forms"
+    ],
+    "id": 24
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.18,
+    "name": "Noah Martinez",
+    "image": "design-systems.jpeg",
+    "topic": "Design Systems",
+    "description": "Design systems are a collection of reusable components, guidelines, and best practices that help ensure consistency and efficiency in the design and development process.",
+    "subtopics": [
+      "Component libraries",
+      "Style guides",
+      "Design principles",
+      "Design tokens",
+      "Pattern libraries"
+    ],
+    "id": 25
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.33,
+    "name": "Chloe Taylor",
+    "image": "performance.png",
+    "topic": "Performance Optimization",
+    "description": "Performance optimization refers to the process of improving the speed and efficiency of a website or web application.",
+    "subtopics": [
+      "Minimizing HTTP requests",
+      "Reducing file sizes",
+      "Browser caching",
+      "Code optimization",
+      "Content Delivery Networks (CDNs)",
+      "Lazy loading",
+      "Responsive images",
+      "Gzip compression",
+      "Database optimization",
+      "Load testing"
+    ],
+    "id": 26
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.41,
+    "name": "David Lee",
+    "image": "cross-browser.jpeg",
+    "topic": "Cross-Browser Compatibility",
+    "description": "Cross-browser compatibility is the ability of a website, web application, HTML/JS code, or other digital content to function correctly on different web browsers, platforms, and devices.",
+    "subtopics": [
+      "Browser testing",
+      "Polyfills and fallbacks",
+      "Vendor-specific prefixes",
+      "Feature detection",
+      "Graceful degradation"
+    ],
+    "id": 27
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.81,
+    "name": "Emily Kim",
+    "image": "seo.jpeg",
+    "topic": "Search Engine Optimization (SEO)",
+    "description": "Search Engine Optimization (SEO) is the practice of increasing the quality and quantity of traffic to a website by improving its visibility and ranking on search engine results pages (SERPs).",
+    "subtopics": [
+      "Keyword research",
+      "On-page optimization",
+      "Off-page optimization",
+      "Technical SEO",
+      "Local SEO",
+      "Mobile SEO"
+    ],
+    "id": 28
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.69,
+    "name": "Gabriel Hernandez",
+    "image": "web-security.jpeg",
+    "topic": "Web Security",
+    "description": "Web security refers to the practice of protecting websites and web applications from various security threats such as hacking, data breaches, and malware attacks.",
+    "subtopics": [
+      "Authentication and Authorization",
+      "HTTPS and SSL/TLS protocols",
+      "Input validation and sanitization",
+      "Cross-site scripting (XSS) prevention",
+      "SQL injection prevention"
+    ],
+    "id": 29
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.44,
+    "name": "Avery Perez",
+    "image": "testing.jpeg",
+    "topic": "Testing and Debugging",
+    "description": "Testing and debugging are important parts of the software development process. They involve identifying and fixing errors or bugs in the code to ensure that the application works as intended.",
+    "subtopics": [
+      "Unit testing",
+      "Integration testing",
+      "Functional testing",
+      "Debugging techniques",
+      "Test-driven development"
+    ],
+    "id": 30
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.99,
+    "name": "Madison Davis",
+    "image": "ci-cd.jpeg",
+    "topic": "Continuous Integration/Continuous Deployment (CI/CD)",
+    "description": "Continuous Integration/Continuous Deployment (CI/CD) is a set of practices that combines the processes of building, testing, and deploying code changes automatically and frequently. This helps to ensure that code changes are of high quality and are released more quickly and reliably.",
+    "subtopics": [
+      "Automated testing",
+      "Continuous delivery",
+      "Continuous deployment",
+      "Version control",
+      "Monitoring"
+    ],
+    "id": 31
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.27,
+    "name": "Isabella Wilson",
+    "image": "devops.png",
+    "topic": "DevOps",
+    "description": "DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle while delivering features, fixes, and updates frequently, in close alignment with business objectives.",
+    "subtopics": [
+      "Continuous Integration (CI)",
+      "Continuous Delivery (CD)",
+      "Infrastructure as Code (IaC)",
+      "Configuration Management",
+      "Monitoring and Logging",
+      "Collaboration and Communication"
+    ],
+    "id": 32
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.38,
+    "name": "Jacob Garcia",
+    "image": "cloud.jpeg",
+    "topic": "Cloud Computing",
+    "description": "Cloud computing refers to the delivery of computing services, including servers, storage, databases, networking, software, analytics, and intelligence, over the internet (the cloud).",
+    "subtopics": [
+      "Public, private and hybrid clouds",
+      "Infrastructure as a Service (IaaS)",
+      "Platform as a Service (PaaS)",
+      "Software as a Service (SaaS)",
+      "Cloud storage",
+      "Cloud security"
+    ],
+    "id": 33
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.9,
+    "name": "Mia Brown",
+    "image": "docker.png",
+    "topic": "Docker",
+    "description": "Docker is a platform that allows developers to easily create, deploy, and run applications in containers. Containers are lightweight, standalone, and portable environments that contain all the necessary software, libraries, and configurations required for an application to run.",
+    "subtopics": [
+      "Docker Engine",
+      "Docker Compose",
+      "Docker Swarm",
+      "Docker Hub"
+    ],
+    "id": 34
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.73,
+    "name": "Evelyn Nguyen",
+    "image": "microservices.png",
+    "topic": "Microservices",
+    "description": "Microservices is an architectural approach to developing software applications as a collection of small, independently deployable services that work together to perform a larger function.",
+    "subtopics": [
+      "Service-oriented architecture (SOA)",
+      "Service discovery",
+      "API gateway",
+      "Load balancing",
+      "Scalability",
+      "Fault tolerance"
+    ],
+    "id": 35
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.14,
+    "name": "Liam Hernandez",
+    "image": "pwa.png",
+    "topic": "Progressive Web Apps (PWA)",
+    "description": "Progressive Web Apps (PWA) are web applications that provide users with an app-like experience, utilizing modern web capabilities to deliver fast, reliable, and engaging experiences.",
+    "subtopics": [
+      "Offline capabilities",
+      "Push notifications",
+      "Add to home screen",
+      "Service workers",
+      "Fast and responsive",
+      "Secure",
+      "Discoverable"
+    ],
+    "id": 36
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 3.59,
+    "name": "Avery Perez",
+    "image": "wai.jpeg",
+    "topic": "Web Accessibility Initiative (WAI)",
+    "description": "Web Accessibility Initiative (WAI) is an effort by the World Wide Web Consortium (W3C) to improve the accessibility of the web for people with disabilities. It provides guidelines and resources to help developers create websites that are accessible to everyone.",
+    "subtopics": [
+      "Understanding accessibility guidelines",
+      "Creating accessible web content",
+      "Making websites usable with assistive technologies",
+      "Designing for accessibility",
+      "Evaluating accessibility"
+    ],
+    "id": 37
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.03,
+    "name": "Victoria Kim",
+    "image": "cms.png",
+    "topic": "Content Management Systems (CMS)",
+    "description": "A content management system (CMS) is a software application that enables users to create, manage, and publish digital content, typically on the internet. CMSs are commonly used for websites, blogs, and other online publications that require frequent updates and changes.",
+    "subtopics": [
+      "WordPress",
+      "Drupal",
+      "Joomla",
+      "Sitecore",
+      "Contentful"
+    ],
+    "id": 38
+  },
+  {
+    "category": "Web Development Concepts and Technologies",
+    "rating": 4.07,
+    "name": "Ryan Jones",
+    "image": "analytics.png",
+    "topic": "Web Analytics",
+    "description": "Web analytics is the measurement, collection, analysis, and reporting of web data to understand and optimize web usage. It involves tracking website visitors and their behavior, including how they interact with the site and the content they consume.",
+    "subtopics": [
+      "Data collection methods (e.g., page views, clickstream, event tracking)",
+      "Metrics and KPIs (e.g., bounce rate, conversion rate, time on page)",
+      "Tools and platforms (e.g., Google Analytics, Adobe Analytics, Mixpanel)",
+      "Data analysis techniques (e.g., segmentation, funnel analysis, A/B testing)",
+      "Data visualization and reporting"
+    ],
+    "id": 39
+  }
+]

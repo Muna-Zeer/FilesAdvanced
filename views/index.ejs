@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    />
 
-    <title>List of files </title>
-
-</head>
-<body>
+    <title>List of files</title>
+  </head>
+  <body>
     <h1>List of fileNames</h1>
-    <div>
+    <!-- search from file  -->
+    <form action="/search" method="get">
+      <input type="text" name="searchItem" placeholder="search...." />
+      <button type="submit">search</button>
+
+      <div>
         <ul>
-            <% files.forEach(file => { %>
-              <li>
-                <a href="/files/<%= file %>"><%= file %></a>
-                <a href="/files/<%= file %>/edit"><i class="fas fa-edit"></i></a>
-                <a href="/files/<%= file %>/delete"><i class="fas fa-trash"></i></a>
-              </li> 
-            <% }); %>
-          </ul>
-    </div> 
+          <% files.forEach(file => { %>
+          <li>
+            <a href="/files/<%= file %>"><%= file %></a>
+            <a href="/files/<%= file %>/edit"><i class="fas fa-edit"></i></a>
+            <a href="/files/<%= file %>/delete"><i class="fas fa-trash"></i></a>
+          </li>
+          <% }); %>
+        </ul>
+        <button type="submit" class="createfile">
+          <a href="/create" class="create-file-btn">Create file</a>
+        </button>
+      </div>
+    </form>
     <div>
-        <h2>Actions</h2>
-            <button type="submit"><a href="/create" class="create-file-btn">Create file</a></button>
-     
+      <h2>Actions</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" accept=".txt, .pdf, .js, .json, .img, .docx">
+        <label for="compress">Compress file before upload?</label>
+        <input type="checkbox" name="compress" id="compress">
+        <button type="submit">Upload file</button>
+    </form>
+    
+      <form action="/displayUploadedFiles" method="get">
+        <button type="submit">View Uploaded Files</button>
+    </form>
+      <!-- list of buttons for the rest of operation  -->
     </div>
-</body>
+  </body>
 </html>

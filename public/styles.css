@@ -42,9 +42,105 @@ button {
     border: none;
     border-radius: 3px;
     cursor: pointer;
-  
+  margin: 5px;
   }
   
   button:hover {
     background-color: #0056b3;
   }
+  .filecontent{
+    display: flex;
+    align-items: center;
+justify-content: center;
+
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+
+}
+input[type="file"]{
+padding: 10px;}
+input[type="submit"] {
+    background-color: #17a2b8;
+    color: #fff;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #138496;
+}
+
+input[type="file"] + button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="file"] + button:hover {
+    background-color: #218838;
+}
+
+input[type="text"] + button {
+    background-color: #17a2b8;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="text"] + button:hover {
+    background-color: #138496;
+    width: 100px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 20px;
+    margin-bottom: 10px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+}
+li a{
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+}
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.createfile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
