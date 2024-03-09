@@ -1,4 +1,5 @@
 const fs = require("fs");
+require("dotenv").config({ path: "./file.env" });
 // const error = require("errorhandler");
 const zlib = require("zlib");
 const crypto = require("crypto");
@@ -39,24 +40,93 @@ const compressedFile = async (inputFile, outputFile) => {
     throw new Error("Error while compressing the file: " + err.message);
   }
 };
+//file encryption
+
+const generateKey = (secretKey) => {
+  return crypto.pbkdf2Sync(secretKey, "salt", 100000, 32, "sha512");
+};
+
+const encryptData = async (data, secretKey) => {
+  try {
+    // const secretKey = process.env.SECRET_KEY;
+    console.log("the value of secret key", secretKey);
+    const iv = crypto.randomBytes(16);
+
+    const key = generateKey(secretKey);
+
+    const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
+    let encryptedData = cipher.update(data, "utf8", "hex");
+    encryptedData += cipher.final("hex");
+    return iv.toString("hex") + ":" + encryptedData;
+  } catch (err) {
+    console.log("Failed while encrypting the file's data", err);
+    throw new Error("Failed while encrypting the file's data: " + err.message);
+  }
+};
+
+//file decryption
+
+const decryptData = async (data, secretKey) => {
+  try {
+    const parts = data.split(":");
+    const iv = Buffer.from(parts.shift(), "hex");
+    const encryptedData = Buffer.from(parts.join(":"), "hex");
+    const key = generateKey(secretKey);
+    const decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
+    let decryptedData = decipher.update(encryptedData);
+    decryptedData = Buffer.concat([decryptedData, decipher.final()]);
+    return decryptedData.toString();
+  } catch (err) {
+    console.log("Failed while decrypting the file's data", err);
+    throw new Error("Failed while decrypting the file's data", err.message);
+  }
+};
 
 const uploadFile = async (req, res) => {
   try {
     const compress = req.body.compress == "on";
     const file = req.file;
-    let filePath = file.path;
     if (compress) {
-      const compressedFilePath = file.path;
+      // If compress checkbox is checked, compress the file
+      const compressedFilePath = file.path ;
       await compressedFile(file.path, compressedFilePath);
-      filePath = compressedFilePath;
+      fs.rename(compressedFilePath, `uploads/${file.originalname}`, (err) => {
+        if (err) {
+          res.status(500).send("Error while uploading file");
+        } else {
+          res.status(200).send("File uploaded successfully");
+        }
+      });
     }
-    fs.rename(file.path, `uploads/${file.originalname}`, (err) => {
+    else{
+    fs.readFile(file.path, async (err, data) => {
       if (err) {
-        res.status(500).send("Error while uploading file");
-      } else {
-        res.status(200).send("File uploaded successfully");
+        return res.status(500).send("Error while reading file");
       }
-    });
+
+      try {
+        const secretKey = process.env.SECRET_KEY;
+        // console.log("the value of the secret key",secretKey);
+        const encryptedData = await encryptData(data, secretKey);
+
+        console.log("encrypted data", encryptedData);
+        const encryptedFileName = `uploads/file-${Date.now()}.txt`;
+        console.log("encrypted name", encryptedFileName);
+        fs.writeFile(encryptedFileName, encryptedData, async (err) => {
+          if (err) {
+            return res.status(500).send("Error while uploading file");
+          }
+          const decryptedData = await decryptData(encryptedData, secretKey);
+          console.log("decryptedData ", decryptedData);
+          res.status(200).send("File uploaded successfully");
+        });
+      } catch (error) {
+        console.error("Error encrypting file data:", error);
+        res
+          .status(500)
+          .send({ message: "Failed to upload file", error: error.message });
+      }
+    });}
   } catch (error) {
     console.error("Error uploading file:", error);
     res
@@ -72,41 +142,11 @@ const deCompressedFile = async (inputFile, outputFile) => {
     const inp = fs.createReadStream(inputFile);
     const out = fs.createWriteStream(outputFile);
     inp.pipe(unzip).pipe(out);
+
     console.log("file is decompressed successfully");
   } catch (err) {
     console.log("file is decompressed failed" + err.message);
     throw new Error("Error while decompressing to new file" + err.message);
-  }
-};
-
-//file encryption
-
-const encryptData = async (data) => {
-  try {
-    const secretKey = "my-secret-key";
-
-    const cipher = crypto.createCipher("aes-256-ccm", secretKey);
-    let encryptData = cipher.update(data, "utf8", "hex");
-    encryptData += cipher.final("hex");
-    return encryptData;
-  } catch (err) {
-    console.log("Filed while encrypted the file's data" + err);
-    throw new Error("Filed while encrypted the file's data", err.message);
-  }
-};
-//file decryption
-const decryptedData = async (data) => {
-  try {
-    const secretKey = "my-secret-key";
-
-    const decipher = crypto.createDecipher("aes-256-ccm", secretKey);
-    const decryptData = decipher.update(data, "utf8", "hex");
-    decryptData += decipher.final("utf8");
-    return decryptData;
-  } catch (err) {
-    console.log("Failed while decrypted the file's data" + err);
-
-    throw new Error("Filed while decrypted the file's data", err.message);
   }
 };
 
@@ -123,33 +163,57 @@ const getListFiles = async (req, res) => {
       .send({ message: "Failed to list files", error: error.message });
   }
 };
-// File download
-const downloadFile = async (req, res) => {
+// File downloadconst
+ downloadFile = async (req, res) => {
   try {
     const fileName = req.params.fileName;
     const filePath = path.join(__dirname, "../uploads", fileName);
-    const compressedRequest = req.query.compress = "true";
+    const compressedRequest = req.query.compress === "true"; 
+
     if (compressedRequest) {
-      const compressedRequestPath = filePath ;
+      const compressedRequestPath = filePath;
       await compressedFile(filePath, compressedRequestPath);
-      res.download(compressedRequestPath, fileName );
+      res.download(compressedRequestPath, fileName);
     } else {
-      res.download(filePath, fileName);
+
+      fs.readFile(filePath, async (err, data) => {
+        if (err) {
+          return res.status(500).send("Error while reading file");
+        }
+
+        try {
+          const secretKey = process.env.SECRET_KEY;
+          const decryptedData = await decryptData(data, secretKey);
+          const decryptedFileName = `decrypted_${fileName}`;
+
+          const decryptedFilePath = path.join(__dirname, "../temp", decryptedFileName);
+          fs.writeFile(decryptedFilePath, decryptedData, async (err) => {
+            if (err) {
+              return res.status(500).send("Error while decrypting file");
+            }
+            res.download(decryptedFilePath, decryptedFileName, () => {
+              fs.unlinkSync(decryptedFilePath);
+            });
+          });
+        } catch (error) {
+          console.error("Error decrypting file data:", error);
+          res.status(500).send({ message: "Failed to download file", error: error.message });
+        }
+      });
     }
   } catch (error) {
     console.error("Error while downloading the file", error);
-    res
-      .status(500)
-      .send({ message: "Unable to download the file", error: error.message });
+    res.status(500).send({ message: "Unable to download the file", error: error.message });
   }
-};
+  };
+
 
 module.exports = {
   uploadFile,
   deCompressedFile,
   compressedFile,
   encryptData,
-  decryptedData,
+  decryptData,
   downloadFile,
   getListFiles,
   searchFile,

@@ -4,7 +4,7 @@ const app = express();
 const fs = require("fs");
 const path = require("path");
 //export user functions
-const {uploadFile,searchFile,compressedFile,deCompressedFile,encryptData,decryptedData,
+const {uploadFile,searchFile,compressedFile,deCompressedFile,encryptData,decryptData,
     getListFiles,downloadFile} =require("./controller/fileUserOperations");
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -131,7 +131,7 @@ app.get("/search",searchFile);
 app.post("/compressFile",compressedFile);
 app.post("/decompressFile",deCompressedFile);
 app.post("/encrypt",encryptData);
-app.post("/decrypt",decryptedData);
+app.post("/decrypt",decryptData);
 app.get("/displayUploadedFiles", async (req, res) => {
     try {
         const uploadDir = path.join(__dirname, "./uploads");
