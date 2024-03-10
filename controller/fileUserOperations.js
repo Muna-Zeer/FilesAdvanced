@@ -8,18 +8,27 @@ const path = require("path");
 const app = express();
 
 //search file name or by metadata
-//it needs to check is not completed yet
+//it needs to check it out  is not completed yet
 const searchFile = async (req, res) => {
   try {
     const { searchItem } = req.query;
-    const directories = ["./uploads", "./data"];
-    const searchResult = [];
-    for (const directory of directories) {
-      const files = await fs.readdir(directory);
-      const result = files.filter((file) => file.includes(searchItem));
-      searchResult.push(...result);
+    const directories = [
+      path.join(__dirname, "../uploads"),
+      path.join(__dirname, "../data"),
+    ];
+    let searchResult = [];
+
+    if (searchItem) {
+      for (const directory of directories) {
+        const files = await fs.promises.readdir(directory);
+        const result = files.filter((file) => file.includes(searchItem));
+        searchResult.push(...result);
+      }
     }
-    res.status(200).send({ result: searchResult });
+
+    res
+      .status(200)
+      .render("index", { files: searchResult, searchItem: searchItem || "" });
   } catch (error) {
     console.log("Error while searching for specific file: " + error.message);
     res.status(500).send({ message: "Unable to find search item" });
@@ -53,7 +62,7 @@ const encryptData = async (data, secretKey) => {
     const iv = crypto.randomBytes(16);
 
     const key = generateKey(secretKey);
-
+    console.log("key", key);
     const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
     let encryptedData = cipher.update(data, "utf8", "hex");
     encryptedData += cipher.final("hex");
@@ -87,8 +96,8 @@ const uploadFile = async (req, res) => {
     const compress = req.body.compress == "on";
     const file = req.file;
     if (compress) {
-      // If compress checkbox is checked, compress the file
-      const compressedFilePath = file.path ;
+      // If compress checkbox is true then compressed
+      const compressedFilePath = file.path;
       await compressedFile(file.path, compressedFilePath);
       fs.rename(compressedFilePath, `uploads/${file.originalname}`, (err) => {
         if (err) {
@@ -97,36 +106,36 @@ const uploadFile = async (req, res) => {
           res.status(200).send("File uploaded successfully");
         }
       });
+    } else {
+      fs.readFile(file.path, async (err, data) => {
+        if (err) {
+          return res.status(500).send("Error while reading file");
+        }
+
+        try {
+          const secretKey = process.env.SECRET_KEY;
+          // console.log("the value of the secret key",secretKey);
+          const encryptedData = await encryptData(data, secretKey);
+
+          console.log("encrypted data", encryptedData);
+          const encryptedFileName = `uploads/file-${Date.now()}.txt`;
+          console.log("encrypted name", encryptedFileName);
+          fs.writeFile(encryptedFileName, encryptedData, async (err) => {
+            if (err) {
+              return res.status(500).send("Error while uploading file");
+            }
+            const decryptedData = await decryptData(encryptedData, secretKey);
+            console.log("decryptedData ", decryptedData);
+            res.status(200).send("File uploaded successfully");
+          });
+        } catch (error) {
+          console.error("Error encrypting file data:", error);
+          res
+            .status(500)
+            .send({ message: "Failed to upload file", error: error.message });
+        }
+      });
     }
-    else{
-    fs.readFile(file.path, async (err, data) => {
-      if (err) {
-        return res.status(500).send("Error while reading file");
-      }
-
-      try {
-        const secretKey = process.env.SECRET_KEY;
-        // console.log("the value of the secret key",secretKey);
-        const encryptedData = await encryptData(data, secretKey);
-
-        console.log("encrypted data", encryptedData);
-        const encryptedFileName = `uploads/file-${Date.now()}.txt`;
-        console.log("encrypted name", encryptedFileName);
-        fs.writeFile(encryptedFileName, encryptedData, async (err) => {
-          if (err) {
-            return res.status(500).send("Error while uploading file");
-          }
-          const decryptedData = await decryptData(encryptedData, secretKey);
-          console.log("decryptedData ", decryptedData);
-          res.status(200).send("File uploaded successfully");
-        });
-      } catch (error) {
-        console.error("Error encrypting file data:", error);
-        res
-          .status(500)
-          .send({ message: "Failed to upload file", error: error.message });
-      }
-    });}
   } catch (error) {
     console.error("Error uploading file:", error);
     res
@@ -164,18 +173,17 @@ const getListFiles = async (req, res) => {
   }
 };
 // File downloadconst
- downloadFile = async (req, res) => {
+downloadFile = async (req, res) => {
   try {
     const fileName = req.params.fileName;
     const filePath = path.join(__dirname, "../uploads", fileName);
-    const compressedRequest = req.query.compress === "true"; 
+    const compressedRequest = req.query.compress === "true";
 
     if (compressedRequest) {
       const compressedRequestPath = filePath;
       await compressedFile(filePath, compressedRequestPath);
       res.download(compressedRequestPath, fileName);
     } else {
-
       fs.readFile(filePath, async (err, data) => {
         if (err) {
           return res.status(500).send("Error while reading file");
@@ -186,7 +194,11 @@ const getListFiles = async (req, res) => {
           const decryptedData = await decryptData(data, secretKey);
           const decryptedFileName = `decrypted_${fileName}`;
 
-          const decryptedFilePath = path.join(__dirname, "../temp", decryptedFileName);
+          const decryptedFilePath = path.join(
+            __dirname,
+            "../temp",
+            decryptedFileName
+          );
           fs.writeFile(decryptedFilePath, decryptedData, async (err) => {
             if (err) {
               return res.status(500).send("Error while decrypting file");
@@ -197,16 +209,19 @@ const getListFiles = async (req, res) => {
           });
         } catch (error) {
           console.error("Error decrypting file data:", error);
-          res.status(500).send({ message: "Failed to download file", error: error.message });
+          res
+            .status(500)
+            .send({ message: "Failed to download file", error: error.message });
         }
       });
     }
   } catch (error) {
     console.error("Error while downloading the file", error);
-    res.status(500).send({ message: "Unable to download the file", error: error.message });
+    res
+      .status(500)
+      .send({ message: "Unable to download the file", error: error.message });
   }
-  };
-
+};
 
 module.exports = {
   uploadFile,

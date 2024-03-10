@@ -1,2 +1,0 @@
-Want to automate test data generation?
-If you sign in using your Google account, you can download random data programmatically by saving your schemas and using curl to download data in a shell script via a RESTful url shell script via bnb.

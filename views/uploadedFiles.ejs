@@ -12,6 +12,10 @@
   </head>
   <body>
     <h1>List of Uploaded Files</h1>
+      <!-- search from file  -->
+      <form action="/search" method="get">
+        <input type="text" name="searchItem" placeholder="search...." />
+        <button type="submit">search</button>
     <ul>
       <% filesList.forEach(file => { %>
       <li>
@@ -25,5 +29,6 @@
       </li>
       <% }); %>
     </ul>
+    </form>
   </body>
 </html>
