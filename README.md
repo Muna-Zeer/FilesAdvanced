@@ -20,10 +20,13 @@
  - Compression Libraries (Like zlib for compress file)
  - Express (For Routing)
 
- ## Installation
- - Clone the repository
- <div style="background-color: #fff; color:#ccc; padding: 10px;">
- ```
- git clone https://github.com/Muna-Zeer/FilesAdvanced.git
- ```
- </div>
+## Installation
+<div style="background-color: #f0f0f0; padding: 10px; color:#ccc">
+    
+
+- Clone the repository
+
+```bash
+git clone https://github.com/Muna-Zeer/FilesAdvanced.git
+</div>
+```
